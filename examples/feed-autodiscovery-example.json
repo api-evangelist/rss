@@ -1,0 +1,39 @@
+{
+  "description": "How an HTML page advertises the location of its RSS, Atom, and JSON Feed documents via <link rel='alternate'> elements in the document head. Feed readers, browsers, and crawlers scan the HEAD of a page for these elements to discover feeds without requiring the user to know the exact feed URL.",
+  "htmlPattern": "<link rel=\"alternate\" type=\"<media-type>\" title=\"<title>\" href=\"<feed-url>\">",
+  "examples": [
+    {
+      "format": "RSS 2.0",
+      "mediaType": "application/rss+xml",
+      "html": "<link rel=\"alternate\" type=\"application/rss+xml\" title=\"API Evangelist RSS\" href=\"https://apievangelist.com/feed.xml\">"
+    },
+    {
+      "format": "Atom 1.0",
+      "mediaType": "application/atom+xml",
+      "html": "<link rel=\"alternate\" type=\"application/atom+xml\" title=\"API Evangelist Atom\" href=\"https://apievangelist.com/atom.xml\">"
+    },
+    {
+      "format": "JSON Feed 1.1",
+      "mediaType": "application/feed+json",
+      "html": "<link rel=\"alternate\" type=\"application/feed+json\" title=\"API Evangelist JSON Feed\" href=\"https://apievangelist.com/feed.json\">"
+    },
+    {
+      "format": "OPML Subscription List",
+      "mediaType": "text/x-opml",
+      "html": "<link rel=\"alternate\" type=\"text/x-opml\" title=\"My Subscriptions\" href=\"https://apievangelist.com/subscriptions.opml\">"
+    }
+  ],
+  "wellKnown": {
+    "path": "/.well-known/feeds",
+    "status": "informal",
+    "description": "Some sites publish an index of feeds at /.well-known/feeds as an HTTP-level alternative to HTML autodiscovery. This is not yet a registered well-known URI in the IETF registry; HTML autodiscovery and OPML subscription lists remain the interoperable mechanisms."
+  },
+  "fullPageExample": {
+    "title": "Example HEAD with multi-format autodiscovery",
+    "html": "<!doctype html>\n<html>\n  <head>\n    <title>API Evangelist</title>\n    <link rel=\"alternate\" type=\"application/rss+xml\" title=\"RSS\" href=\"https://apievangelist.com/feed.xml\">\n    <link rel=\"alternate\" type=\"application/atom+xml\" title=\"Atom\" href=\"https://apievangelist.com/atom.xml\">\n    <link rel=\"alternate\" type=\"application/feed+json\" title=\"JSON Feed\" href=\"https://apievangelist.com/feed.json\">\n  </head>\n  <body>...</body>\n</html>"
+  },
+  "_metadata": {
+    "source": "https://www.rssboard.org/rss-autodiscovery",
+    "anchoringQuote": "The rel attribute must have a value of 'alternate', a keyword that indicates the link is an alternate version of the site's main content."
+  }
+}

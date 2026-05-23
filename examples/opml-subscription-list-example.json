@@ -1,0 +1,60 @@
+{
+  "version": "2.0",
+  "head": {
+    "title": "Kin Lane Subscription List",
+    "dateCreated": "Fri, 23 May 2026 12:00:00 +0000",
+    "dateModified": "Fri, 23 May 2026 12:00:00 +0000",
+    "ownerName": "Kin Lane",
+    "ownerEmail": "kin@apievangelist.com",
+    "ownerId": "https://apievangelist.com/",
+    "docs": "http://opml.org/spec2.opml"
+  },
+  "body": {
+    "outline": [
+      {
+        "text": "API Standards",
+        "title": "API Standards",
+        "outline": [
+          {
+            "text": "OpenAPI Initiative Blog",
+            "type": "rss",
+            "version": "RSS2",
+            "title": "OpenAPI Initiative Blog",
+            "xmlUrl": "https://www.openapis.org/blog/rss.xml",
+            "htmlUrl": "https://www.openapis.org/blog"
+          },
+          {
+            "text": "AsyncAPI Initiative",
+            "type": "rss",
+            "version": "ATOM",
+            "title": "AsyncAPI Initiative",
+            "xmlUrl": "https://www.asyncapi.com/feed.xml",
+            "htmlUrl": "https://www.asyncapi.com/"
+          }
+        ]
+      },
+      {
+        "text": "API Evangelist",
+        "type": "rss",
+        "version": "RSS2",
+        "title": "API Evangelist",
+        "xmlUrl": "https://apievangelist.com/feed.xml",
+        "htmlUrl": "https://apievangelist.com/",
+        "category": "/Technology/API,/Standards"
+      },
+      {
+        "text": "RSS Advisory Board",
+        "type": "rss",
+        "version": "RSS2",
+        "title": "RSS Advisory Board",
+        "xmlUrl": "https://www.rssboard.org/news.rss",
+        "htmlUrl": "https://www.rssboard.org/news"
+      }
+    ]
+  },
+  "_metadata": {
+    "format": "OPML 2.0",
+    "source": "http://opml.org/spec2.opml",
+    "purpose": "Feed reader subscription list — portable between RSS readers."
+  }
+}

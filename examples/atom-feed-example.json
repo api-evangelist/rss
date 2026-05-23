@@ -1,0 +1,91 @@
+{
+  "feed": {
+    "@xmlns": "http://www.w3.org/2005/Atom",
+    "id": "https://apievangelist.com/",
+    "title": {
+      "value": "API Evangelist",
+      "type": "text"
+    },
+    "subtitle": "API research, analysis, and advocacy.",
+    "updated": "2026-05-23T12:30:00Z",
+    "author": [
+      {
+        "name": "Kin Lane",
+        "email": "kin@apievangelist.com",
+        "uri": "https://apievangelist.com/"
+      }
+    ],
+    "link": [
+      {
+        "href": "https://apievangelist.com/",
+        "rel": "alternate",
+        "type": "text/html"
+      },
+      {
+        "href": "https://apievangelist.com/atom.xml",
+        "rel": "self",
+        "type": "application/atom+xml"
+      }
+    ],
+    "category": [
+      {
+        "term": "API",
+        "scheme": "https://apievangelist.com/topics"
+      }
+    ],
+    "generator": {
+      "value": "API Evangelist Pipeline",
+      "version": "1.0"
+    },
+    "icon": "https://kinlane-productions.s3.amazonaws.com/favicon.ico",
+    "logo": "https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg",
+    "rights": "Copyright 2026 API Evangelist",
+    "entry": [
+      {
+        "id": "tag:apievangelist.com,2026:post-rss-still-backbone",
+        "title": {
+          "value": "RSS Is Still The Backbone Of Open Content Syndication",
+          "type": "text"
+        },
+        "updated": "2026-05-23T12:00:00Z",
+        "published": "2026-05-23T12:00:00Z",
+        "author": [
+          {
+            "name": "Kin Lane",
+            "email": "kin@apievangelist.com"
+          }
+        ],
+        "link": [
+          {
+            "href": "https://apievangelist.com/2026/05/23/rss-still-the-backbone-of-open-content-syndication/",
+            "rel": "alternate",
+            "type": "text/html"
+          }
+        ],
+        "summary": {
+          "value": "RSS remains the canonical open standard for content syndication twenty-plus years after the spec was frozen.",
+          "type": "text"
+        },
+        "content": {
+          "value": "<p>RSS remains the canonical open standard for content syndication twenty-plus years after the spec was frozen, quietly powering podcast distribution, newsroom workflows, and every feed reader.</p>",
+          "type": "html"
+        },
+        "category": [
+          {
+            "term": "RSS"
+          },
+          {
+            "term": "Standards"
+          }
+        ]
+      }
+    ]
+  },
+  "_metadata": {
+    "format": "Atom 1.0",
+    "namespace": "http://www.w3.org/2005/Atom",
+    "mediaType": "application/atom+xml",
+    "source": "https://datatracker.ietf.org/doc/html/rfc4287",
+    "note": "JSON representation of an Atom 1.0 feed; the wire format is XML."
+  }
+}

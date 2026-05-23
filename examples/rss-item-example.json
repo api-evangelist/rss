@@ -1,0 +1,38 @@
+{
+  "title": "Naftiko Sandbox Skills For OpenAPI",
+  "link": "https://apievangelist.com/2026/05/22/naftiko-sandbox-skills-for-openapi/",
+  "description": "<p>How to generate per-operation skills from an OpenAPI definition that an AI agent can safely invoke inside a Naftiko sandbox.</p>",
+  "author": "kin@apievangelist.com (Kin Lane)",
+  "category": [
+    {
+      "value": "Naftiko",
+      "domain": "https://apievangelist.com/topics"
+    },
+    {
+      "value": "AI"
+    }
+  ],
+  "comments": "https://apievangelist.com/2026/05/22/naftiko-sandbox-skills-for-openapi/#comments",
+  "enclosure": {
+    "url": "https://kinlane-productions.s3.amazonaws.com/podcasts/2026-05-22-naftiko-skills.mp3",
+    "length": 14523847,
+    "type": "audio/mpeg"
+  },
+  "guid": {
+    "value": "tag:apievangelist.com,2026:post-naftiko-sandbox-skills-openapi",
+    "isPermaLink": false
+  },
+  "pubDate": "Thu, 22 May 2026 14:30:00 +0000",
+  "source": {
+    "url": "https://apievangelist.com/feed.xml",
+    "value": "API Evangelist"
+  },
+  "_metadata": {
+    "format": "RSS 2.0 item",
+    "appliesPractices": [
+      "guid with isPermaLink=false using Tag URI scheme",
+      "exactly one enclosure (RSS Best Practices Profile)",
+      "RFC 822 pubDate in UTC"
+    ]
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "$id": "atom-entry-schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atom 1.0 Entry",
+  "description": "Schema describing an atom:entry element per IETF RFC 4287. Each entry MUST have an id, title, and updated, plus an author (which may be inherited from the parent feed) and either content or an alternate link.",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "updated"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "iri",
+      "description": "Permanent, universally unique identifier for this entry."
+    },
+    "title": {
+      "type": "object",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "text",
+            "html",
+            "xhtml"
+          ],
+          "default": "text"
+        }
+      }
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Most recent instant when the entry was meaningfully modified (RFC 3339)."
+    },
+    "published": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Initial creation or first availability of the entry (RFC 3339)."
+    },
+    "author": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "uri": {
+            "type": "string",
+            "format": "iri"
+          }
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "description": "Content of the entry. Required if there is no alternate link present.",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "description": "Either a registered media type or one of 'text', 'html', 'xhtml'."
+        },
+        "src": {
+          "type": "string",
+          "format": "iri",
+          "description": "IRI of remote content. When present, content has no in-line value."
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "description": "Short summary of the entry. Required when content is base64-encoded, references remote content via src, or is omitted in favor of a link.",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "text",
+            "html",
+            "xhtml"
+          ]
+        }
+      }
+    },
+    "link": {
+      "type": "array",
+      "description": "Entries SHOULD contain at least one link with rel='alternate'. Entries MUST NOT contain more than one alternate link per type+hreflang pair.",
+      "items": {
+        "type": "object",
+        "required": [
+          "href"
+        ],
+        "properties": {
+          "href": {
+            "type": "string",
+            "format": "iri"
+          },
+          "rel": {
+            "type": "string",
+            "default": "alternate"
+          },
+          "type": {
+            "type": "string"
+          },
+          "hreflang": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "length": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "category": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "term"
+        ],
+        "properties": {
+          "term": {
+            "type": "string"
+          },
+          "scheme": {
+            "type": "string",
+            "format": "iri"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "contributor": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "uri": {
+            "type": "string",
+            "format": "iri"
+          }
+        }
+      }
+    },
+    "rights": {
+      "type": "string"
+    },
+    "source": {
+      "type": "object",
+      "description": "Metadata from a source feed when an entry is copied from one feed to another.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "iri"
+        },
+        "title": {
+          "type": "string"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

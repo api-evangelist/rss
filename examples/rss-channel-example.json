@@ -1,0 +1,60 @@
+{
+  "rss": {
+    "version": "2.0",
+    "channel": {
+      "title": "API Evangelist",
+      "link": "https://apievangelist.com/",
+      "description": "API research, analysis, and advocacy.",
+      "language": "en-us",
+      "copyright": "Copyright 2026 API Evangelist",
+      "managingEditor": "kin@apievangelist.com (Kin Lane)",
+      "webMaster": "kin@apievangelist.com (Kin Lane)",
+      "pubDate": "Fri, 23 May 2026 12:00:00 +0000",
+      "lastBuildDate": "Fri, 23 May 2026 12:30:00 +0000",
+      "category": [
+        {
+          "value": "API",
+          "domain": "https://apievangelist.com/topics"
+        },
+        {
+          "value": "Standards",
+          "domain": "https://apievangelist.com/topics"
+        }
+      ],
+      "generator": "API Evangelist Pipeline",
+      "docs": "https://www.rssboard.org/rss-specification",
+      "ttl": 60,
+      "image": {
+        "url": "https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg",
+        "title": "API Evangelist",
+        "link": "https://apievangelist.com/",
+        "width": 144,
+        "height": 144
+      },
+      "item": [
+        {
+          "title": "RSS Is Still The Backbone Of Open Content Syndication",
+          "link": "https://apievangelist.com/2026/05/23/rss-still-the-backbone-of-open-content-syndication/",
+          "description": "<p>RSS remains the canonical open standard for content syndication twenty-plus years after the spec was frozen, quietly powering podcast distribution, newsroom workflows, and every feed reader.</p>",
+          "author": "kin@apievangelist.com (Kin Lane)",
+          "category": [
+            {
+              "value": "RSS"
+            }
+          ],
+          "guid": {
+            "value": "tag:apievangelist.com,2026:post-rss-still-backbone",
+            "isPermaLink": false
+          },
+          "pubDate": "Fri, 23 May 2026 12:00:00 +0000"
+        }
+      ]
+    }
+  },
+  "_metadata": {
+    "format": "RSS 2.0",
+    "mediaType": "application/rss+xml",
+    "source": "https://www.rssboard.org/rss-specification",
+    "note": "JSON representation of an RSS 2.0 feed for illustration; the wire format is XML."
+  }
+}

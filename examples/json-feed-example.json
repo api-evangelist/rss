@@ -1,0 +1,69 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "API Evangelist",
+  "home_page_url": "https://apievangelist.com/",
+  "feed_url": "https://apievangelist.com/feed.json",
+  "description": "API research, analysis, and advocacy.",
+  "icon": "https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg",
+  "favicon": "https://kinlane-productions.s3.amazonaws.com/favicon.ico",
+  "language": "en-US",
+  "authors": [
+    {
+      "name": "Kin Lane",
+      "url": "https://apievangelist.com/",
+      "avatar": "https://kinlane-productions.s3.amazonaws.com/kin-lane-avatar.jpg"
+    }
+  ],
+  "hubs": [
+    {
+      "type": "WebSub",
+      "url": "https://websub.superfeedr.com/"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://apievangelist.com/2026/05/23/rss-still-the-backbone-of-open-content-syndication/",
+      "url": "https://apievangelist.com/2026/05/23/rss-still-the-backbone-of-open-content-syndication/",
+      "title": "RSS Is Still The Backbone Of Open Content Syndication",
+      "content_html": "<p>RSS remains the canonical open standard for content syndication twenty-plus years after the spec was frozen, quietly powering podcast distribution, newsroom workflows, and every feed reader.</p>",
+      "content_text": "RSS remains the canonical open standard for content syndication twenty-plus years after the spec was frozen, quietly powering podcast distribution, newsroom workflows, and every feed reader.",
+      "summary": "Why RSS still matters as the open backbone of content syndication in 2026.",
+      "image": "https://kinlane-productions.s3.amazonaws.com/posts/rss-backbone.jpg",
+      "date_published": "2026-05-23T12:00:00Z",
+      "date_modified": "2026-05-23T12:30:00Z",
+      "authors": [
+        {
+          "name": "Kin Lane"
+        }
+      ],
+      "tags": [
+        "RSS",
+        "Syndication",
+        "Standards"
+      ],
+      "language": "en-US"
+    },
+    {
+      "id": "https://apievangelist.com/2026/05/22/naftiko-sandbox-skills-for-openapi/",
+      "url": "https://apievangelist.com/2026/05/22/naftiko-sandbox-skills-for-openapi/",
+      "title": "Naftiko Sandbox Skills For OpenAPI",
+      "content_html": "<p>How to generate per-operation skills from an OpenAPI definition that an AI agent can safely invoke inside a Naftiko sandbox.</p>",
+      "date_published": "2026-05-22T14:30:00Z",
+      "tags": ["Naftiko", "OpenAPI", "AI"],
+      "attachments": [
+        {
+          "url": "https://kinlane-productions.s3.amazonaws.com/podcasts/2026-05-22-naftiko-skills.mp3",
+          "mime_type": "audio/mpeg",
+          "title": "Naftiko Sandbox Skills For OpenAPI — Podcast",
+          "size_in_bytes": 14523847,
+          "duration_in_seconds": 1235.4
+        }
+      ]
+    }
+  ],
+  "_metadata": {
+    "format": "JSON Feed 1.1",
+    "mediaType": "application/feed+json",
+    "source": "https://www.jsonfeed.org/version/1.1/"
+  }
+}

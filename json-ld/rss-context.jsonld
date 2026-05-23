@@ -1,0 +1,296 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "rss": "http://purl.org/rss/2.0/",
+    "atom": "http://www.w3.org/2005/Atom",
+    "jsonfeed": "https://jsonfeed.org/version/1.1/",
+    "opml": "http://opml.org/spec/2/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "hydra": "http://www.w3.org/ns/hydra/core#",
+
+    "Channel": {
+      "@id": "rss:channel",
+      "@type": "@id"
+    },
+    "Item": {
+      "@id": "rss:item",
+      "@type": "@id"
+    },
+    "Feed": {
+      "@id": "atom:feed",
+      "@type": "@id"
+    },
+    "Entry": {
+      "@id": "atom:entry",
+      "@type": "@id"
+    },
+    "JSONFeed": {
+      "@id": "jsonfeed:Feed",
+      "@type": "@id"
+    },
+    "JSONFeedItem": {
+      "@id": "jsonfeed:Item",
+      "@type": "@id"
+    },
+    "OPML": {
+      "@id": "opml:opml",
+      "@type": "@id"
+    },
+    "Outline": {
+      "@id": "opml:outline",
+      "@type": "@id"
+    },
+
+    "title": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "subtitle": {
+      "@id": "schema:alternativeHeadline",
+      "@type": "xsd:string"
+    },
+    "summary": {
+      "@id": "schema:abstract",
+      "@type": "xsd:string"
+    },
+    "link": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "home_page_url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "feed_url": {
+      "@id": "schema:mainEntityOfPage",
+      "@type": "@id"
+    },
+    "language": {
+      "@id": "schema:inLanguage",
+      "@type": "xsd:string"
+    },
+    "copyright": {
+      "@id": "schema:copyrightNotice",
+      "@type": "xsd:string"
+    },
+    "rights": {
+      "@id": "schema:copyrightNotice",
+      "@type": "xsd:string"
+    },
+
+    "pubDate": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:dateTime"
+    },
+    "date_published": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:dateTime"
+    },
+    "published": {
+      "@id": "schema:datePublished",
+      "@type": "xsd:dateTime"
+    },
+    "lastBuildDate": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "updated": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "date_modified": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+
+    "author": {
+      "@id": "schema:author",
+      "@type": "@id"
+    },
+    "authors": {
+      "@id": "schema:author",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "managingEditor": {
+      "@id": "schema:editor",
+      "@type": "@id"
+    },
+    "webMaster": {
+      "@id": "schema:maintainer",
+      "@type": "@id"
+    },
+    "contributor": {
+      "@id": "schema:contributor",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "email": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+
+    "category": {
+      "@id": "schema:about",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "tags": {
+      "@id": "schema:keywords",
+      "@type": "xsd:string",
+      "@container": "@set"
+    },
+    "term": {
+      "@id": "schema:keywords",
+      "@type": "xsd:string"
+    },
+    "scheme": {
+      "@id": "schema:inDefinedTermSet",
+      "@type": "@id"
+    },
+
+    "enclosure": {
+      "@id": "schema:associatedMedia",
+      "@type": "@id"
+    },
+    "attachments": {
+      "@id": "schema:associatedMedia",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "mime_type": {
+      "@id": "schema:encodingFormat",
+      "@type": "xsd:string"
+    },
+    "size_in_bytes": {
+      "@id": "schema:contentSize",
+      "@type": "xsd:integer"
+    },
+    "duration_in_seconds": {
+      "@id": "schema:duration",
+      "@type": "xsd:decimal"
+    },
+    "image": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "banner_image": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "icon": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "favicon": {
+      "@id": "schema:image",
+      "@type": "@id"
+    },
+    "logo": {
+      "@id": "schema:logo",
+      "@type": "@id"
+    },
+
+    "guid": {
+      "@id": "schema:identifier",
+      "@type": "xsd:string"
+    },
+    "id": {
+      "@id": "schema:identifier",
+      "@type": "xsd:string"
+    },
+    "isPermaLink": {
+      "@id": "rss:isPermaLink",
+      "@type": "xsd:boolean"
+    },
+
+    "ttl": {
+      "@id": "rss:ttl",
+      "@type": "xsd:integer"
+    },
+    "generator": {
+      "@id": "schema:applicationCategory",
+      "@type": "xsd:string"
+    },
+    "docs": {
+      "@id": "rdfs:seeAlso",
+      "@type": "@id"
+    },
+
+    "item": {
+      "@id": "schema:hasPart",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "items": {
+      "@id": "schema:hasPart",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "entry": {
+      "@id": "schema:hasPart",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "content": {
+      "@id": "schema:articleBody",
+      "@type": "xsd:string"
+    },
+    "content_html": {
+      "@id": "schema:articleBody",
+      "@type": "xsd:string"
+    },
+    "content_text": {
+      "@id": "schema:articleBody",
+      "@type": "xsd:string"
+    },
+
+    "outline": {
+      "@id": "opml:outline",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "xmlUrl": {
+      "@id": "rdfs:seeAlso",
+      "@type": "@id"
+    },
+    "htmlUrl": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "text": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+
+    "version": {
+      "@id": "schema:version",
+      "@type": "xsd:string"
+    },
+    "hubs": {
+      "@id": "rss:hubs",
+      "@type": "@id",
+      "@container": "@set"
+    },
+    "cloud": {
+      "@id": "rss:cloud",
+      "@type": "@id"
+    }
+  }
+}

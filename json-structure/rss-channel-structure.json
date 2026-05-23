@@ -1,0 +1,179 @@
+{
+  "$id": "rss-channel-structure.json",
+  "title": "RSS 2.0 Channel Structure",
+  "description": "Field-level structure documentation for an RSS 2.0 channel and its items. Intended as a quick human/machine reference to what every node of an RSS feed represents, separate from the validation-focused JSON Schema in json-schema/rss-channel-schema.json.",
+  "format": "RSS 2.0",
+  "namespace": "http://purl.org/rss/2.0/",
+  "rootElement": "rss",
+  "rootAttributes": {
+    "version": {
+      "value": "2.0",
+      "required": true
+    }
+  },
+  "structure": {
+    "channel": {
+      "description": "Container for feed metadata and items.",
+      "required": ["title", "link", "description"],
+      "fields": {
+        "title": {
+          "type": "string",
+          "description": "Channel name."
+        },
+        "link": {
+          "type": "uri",
+          "description": "Website URL the channel corresponds to."
+        },
+        "description": {
+          "type": "string",
+          "description": "Phrase or sentence describing the channel."
+        },
+        "language": {
+          "type": "language-tag",
+          "description": "RFC 5646 or W3C/ISO 639 language code."
+        },
+        "copyright": {
+          "type": "string"
+        },
+        "managingEditor": {
+          "type": "email-with-name",
+          "description": "RFC 822-style email, optional display name in parentheses."
+        },
+        "webMaster": {
+          "type": "email-with-name"
+        },
+        "pubDate": {
+          "type": "rfc822-date"
+        },
+        "lastBuildDate": {
+          "type": "rfc822-date"
+        },
+        "category": {
+          "type": "array<category>",
+          "description": "Each category may carry a domain attribute identifying the taxonomy."
+        },
+        "generator": {
+          "type": "string"
+        },
+        "docs": {
+          "type": "uri",
+          "default": "https://www.rssboard.org/rss-specification"
+        },
+        "cloud": {
+          "type": "cloud-element",
+          "description": "rssCloud notification endpoint."
+        },
+        "ttl": {
+          "type": "integer-minutes",
+          "description": "Cache lifetime in minutes."
+        },
+        "image": {
+          "type": "image-element",
+          "fields": ["url", "title", "link", "width<=144", "height<=400", "description"]
+        },
+        "rating": {
+          "type": "string",
+          "description": "PICS rating."
+        },
+        "textInput": {
+          "type": "text-input-element"
+        },
+        "skipHours": {
+          "type": "array<integer 0-23>"
+        },
+        "skipDays": {
+          "type": "array<weekday-name>"
+        },
+        "item": {
+          "type": "array<item>",
+          "description": "See item structure."
+        }
+      }
+    },
+    "item": {
+      "description": "A piece of syndicated content. All sub-elements are optional but at least one of title or description MUST be present.",
+      "fields": {
+        "title": {
+          "type": "string"
+        },
+        "link": {
+          "type": "uri",
+          "description": "Permalink to the item."
+        },
+        "description": {
+          "type": "html-string",
+          "description": "Synopsis or full content; HTML must be escaped or CDATA-wrapped."
+        },
+        "author": {
+          "type": "email-with-name"
+        },
+        "category": {
+          "type": "array<category>"
+        },
+        "comments": {
+          "type": "uri"
+        },
+        "enclosure": {
+          "type": "enclosure-element",
+          "attributes": {
+            "url": "uri",
+            "length": "integer-bytes",
+            "type": "media-type"
+          },
+          "bestPractice": "Use at most one enclosure per item (RSS Best Practices Profile)."
+        },
+        "guid": {
+          "type": "string",
+          "attributes": {
+            "isPermaLink": "boolean (default true)"
+          },
+          "bestPractice": "Always provide a guid. When the value is not a resolvable URL, set isPermaLink='false' and use a Tag URI or other stable identifier scheme."
+        },
+        "pubDate": {
+          "type": "rfc822-date",
+          "bestPractice": "Do not publish items with future-dated pubDate; aggregators do not honor embargo."
+        },
+        "source": {
+          "type": "source-element",
+          "attributes": {
+            "url": "uri"
+          }
+        }
+      }
+    }
+  },
+  "mediaTypes": {
+    "primary": "application/rss+xml",
+    "alternates": ["text/xml", "application/xml"]
+  },
+  "extensions": {
+    "mechanism": "XML namespaces",
+    "common": [
+      {
+        "name": "iTunes Podcasting",
+        "namespace": "http://www.itunes.com/dtds/podcast-1.0.dtd"
+      },
+      {
+        "name": "Media RSS",
+        "namespace": "http://search.yahoo.com/mrss/"
+      },
+      {
+        "name": "Dublin Core",
+        "namespace": "http://purl.org/dc/elements/1.1/"
+      },
+      {
+        "name": "Atom (in RSS)",
+        "namespace": "http://www.w3.org/2005/Atom"
+      },
+      {
+        "name": "Content Module",
+        "namespace": "http://purl.org/rss/1.0/modules/content/"
+      }
+    ]
+  },
+  "references": {
+    "specification": "https://www.rssboard.org/rss-specification",
+    "profile": "https://www.rssboard.org/rss-profile",
+    "validator": "https://www.rssboard.org/rss-validator/"
+  }
+}

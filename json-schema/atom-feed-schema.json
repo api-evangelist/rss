@@ -1,0 +1,185 @@
+{
+  "$id": "atom-feed-schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Atom 1.0 Feed",
+  "description": "Schema describing an atom:feed element per IETF RFC 4287 (Atom Syndication Format). Atom uses the namespace http://www.w3.org/2005/Atom and the application/atom+xml media type.",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "updated"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "iri",
+      "description": "Permanent, universally unique identifier for the feed (IRI). Required, exactly one."
+    },
+    "title": {
+      "type": "object",
+      "description": "Human-readable title for the feed. Required, exactly one.",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "text",
+            "html",
+            "xhtml"
+          ],
+          "default": "text"
+        }
+      }
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Most recent instant when the feed was meaningfully modified, per RFC 3339. Required, exactly one."
+    },
+    "author": {
+      "type": "array",
+      "description": "Author(s) of the feed. One or more required unless every entry contains its own author element.",
+      "items": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "uri": {
+            "type": "string",
+            "format": "iri"
+          }
+        }
+      }
+    },
+    "link": {
+      "type": "array",
+      "description": "References from the feed to web resources. Common rel values: self, alternate, related, enclosure, via.",
+      "items": {
+        "type": "object",
+        "required": [
+          "href"
+        ],
+        "properties": {
+          "href": {
+            "type": "string",
+            "format": "iri"
+          },
+          "rel": {
+            "type": "string",
+            "default": "alternate"
+          },
+          "type": {
+            "type": "string",
+            "description": "Media type of the linked resource."
+          },
+          "hreflang": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "length": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "category": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "term"
+        ],
+        "properties": {
+          "term": {
+            "type": "string"
+          },
+          "scheme": {
+            "type": "string",
+            "format": "iri"
+          },
+          "label": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "contributor": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "uri": {
+            "type": "string",
+            "format": "iri"
+          }
+        }
+      }
+    },
+    "generator": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "uri": {
+          "type": "string",
+          "format": "iri"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "icon": {
+      "type": "string",
+      "format": "iri",
+      "description": "IRI of a small image (favicon-sized) providing iconic visual identification."
+    },
+    "logo": {
+      "type": "string",
+      "format": "iri",
+      "description": "IRI of a larger image providing visual identification (recommended 2:1 aspect ratio)."
+    },
+    "rights": {
+      "type": "string",
+      "description": "Information about rights held in and over the feed."
+    },
+    "subtitle": {
+      "type": "string",
+      "description": "Human-readable description or subtitle for the feed."
+    },
+    "entry": {
+      "type": "array",
+      "description": "Entries belonging to the feed.",
+      "items": {
+        "$ref": "atom-entry-schema.json"
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,208 @@
+{
+  "$id": "rss-channel-schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RSS 2.0 Channel",
+  "description": "Schema describing the top-level <channel> element of an RSS 2.0 feed per the RSS Advisory Board specification at https://www.rssboard.org/rss-specification. The channel is the container for the feed's metadata and a sequence of items.",
+  "type": "object",
+  "required": [
+    "title",
+    "link",
+    "description"
+  ],
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "The name of the channel — typically matches the corresponding website's title.",
+      "examples": [
+        "API Evangelist"
+      ]
+    },
+    "link": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL to the HTML website corresponding to the channel."
+    },
+    "description": {
+      "type": "string",
+      "description": "Phrase or sentence describing the channel."
+    },
+    "language": {
+      "type": "string",
+      "description": "Language the channel is written in (RFC 5646 language tag or W3C ISO 639 short code).",
+      "examples": [
+        "en-us"
+      ]
+    },
+    "copyright": {
+      "type": "string",
+      "description": "Copyright notice for content in the channel."
+    },
+    "managingEditor": {
+      "type": "string",
+      "description": "Email address (and optional name) for the person responsible for editorial content.",
+      "examples": [
+        "editor@example.com (Editor Name)"
+      ]
+    },
+    "webMaster": {
+      "type": "string",
+      "description": "Email address for the person responsible for technical issues relating to the channel."
+    },
+    "pubDate": {
+      "type": "string",
+      "description": "Publication date for the content in the channel, formatted per RFC 822."
+    },
+    "lastBuildDate": {
+      "type": "string",
+      "description": "Last time the content of the channel changed, formatted per RFC 822."
+    },
+    "category": {
+      "type": "array",
+      "description": "Categories that the channel belongs to. Each may optionally carry a domain attribute identifying the taxonomy.",
+      "items": {
+        "type": "object",
+        "required": [
+          "value"
+        ],
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "generator": {
+      "type": "string",
+      "description": "String indicating the program used to generate the channel."
+    },
+    "docs": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL pointing to documentation for the RSS format used (typically the RSS spec itself)."
+    },
+    "cloud": {
+      "type": "object",
+      "description": "Allows processes to register with a cloud to be notified of channel updates (rssCloud).",
+      "properties": {
+        "domain": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer"
+        },
+        "path": {
+          "type": "string"
+        },
+        "registerProcedure": {
+          "type": "string"
+        },
+        "protocol": {
+          "type": "string"
+        }
+      }
+    },
+    "ttl": {
+      "type": "integer",
+      "description": "Time to live — number of minutes that indicates how long a channel can be cached before refreshing from the source.",
+      "minimum": 0
+    },
+    "image": {
+      "type": "object",
+      "description": "Image that can be displayed with the channel.",
+      "required": [
+        "url",
+        "title",
+        "link"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "title": {
+          "type": "string"
+        },
+        "link": {
+          "type": "string",
+          "format": "uri"
+        },
+        "width": {
+          "type": "integer",
+          "maximum": 144
+        },
+        "height": {
+          "type": "integer",
+          "maximum": 400
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "rating": {
+      "type": "string",
+      "description": "PICS content rating for the channel."
+    },
+    "textInput": {
+      "type": "object",
+      "description": "Specifies a text input box that can be displayed with the channel.",
+      "required": [
+        "title",
+        "description",
+        "name",
+        "link"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "link": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "skipHours": {
+      "type": "array",
+      "description": "Hours (0–23 UTC) when aggregators may skip reading the channel.",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 23
+      }
+    },
+    "skipDays": {
+      "type": "array",
+      "description": "Days when aggregators may skip reading the channel.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ]
+      }
+    },
+    "item": {
+      "type": "array",
+      "description": "The items in the channel.",
+      "items": {
+        "$ref": "rss-item-schema.json"
+      }
+    }
+  },
+  "additionalProperties": true
+}

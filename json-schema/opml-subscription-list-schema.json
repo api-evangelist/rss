@@ -1,0 +1,182 @@
+{
+  "$id": "opml-subscription-list-schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OPML 2.0 Subscription List",
+  "description": "Schema describing an OPML 2.0 document modeling a feed reader subscription list. Each outline element with type='rss' references a feed via xmlUrl and (optionally) the corresponding human-readable site via htmlUrl. OPML 2.0 is specified at http://opml.org/spec2.opml.",
+  "type": "object",
+  "required": [
+    "version",
+    "head",
+    "body"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "2.0",
+      "description": "OPML version. This schema targets OPML 2.0."
+    },
+    "head": {
+      "type": "object",
+      "description": "Metadata about the OPML document.",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Title of the document — typically the subscription list owner's name."
+        },
+        "dateCreated": {
+          "type": "string",
+          "description": "RFC 822 date the document was created."
+        },
+        "dateModified": {
+          "type": "string",
+          "description": "RFC 822 date the document was last modified."
+        },
+        "ownerName": {
+          "type": "string"
+        },
+        "ownerEmail": {
+          "type": "string",
+          "format": "email"
+        },
+        "ownerId": {
+          "type": "string",
+          "format": "uri"
+        },
+        "docs": {
+          "type": "string",
+          "format": "uri",
+          "default": "http://opml.org/spec2.opml"
+        },
+        "expansionState": {
+          "type": "string",
+          "description": "Comma-separated list of outline line numbers that should be expanded when the outline is shown."
+        },
+        "vertScrollState": {
+          "type": "integer"
+        },
+        "windowTop": {
+          "type": "integer"
+        },
+        "windowLeft": {
+          "type": "integer"
+        },
+        "windowBottom": {
+          "type": "integer"
+        },
+        "windowRight": {
+          "type": "integer"
+        }
+      }
+    },
+    "body": {
+      "type": "object",
+      "description": "Container for the outline tree.",
+      "required": [
+        "outline"
+      ],
+      "properties": {
+        "outline": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/outline"
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "outline": {
+      "type": "object",
+      "description": "An outline node. For subscription lists, leaf outlines have type='rss' and an xmlUrl pointing to the feed. Outlines may nest to model folders.",
+      "required": [
+        "text"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Required label displayed for the outline."
+        },
+        "type": {
+          "type": "string",
+          "description": "Outline type. Use 'rss' for subscription-list feed entries; 'link' for hyperlinks; other types per OPML 2.0.",
+          "examples": [
+            "rss",
+            "link"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "description": "Human-readable feed title."
+        },
+        "xmlUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of the RSS, Atom, or JSON Feed document. REQUIRED when type='rss'."
+        },
+        "htmlUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL of the human-readable website corresponding to the feed."
+        },
+        "description": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string",
+          "description": "Feed format version (e.g., 'RSS2', 'ATOM').",
+          "examples": [
+            "RSS2"
+          ]
+        },
+        "category": {
+          "type": "string",
+          "description": "Comma-separated list of category slash-strings (e.g., '/Technology/API')."
+        },
+        "created": {
+          "type": "string",
+          "description": "RFC 822 date the outline was created."
+        },
+        "isComment": {
+          "type": "boolean",
+          "default": false
+        },
+        "isBreakpoint": {
+          "type": "boolean",
+          "default": false
+        },
+        "outline": {
+          "type": "array",
+          "description": "Child outlines (for nested folders).",
+          "items": {
+            "$ref": "#/$defs/outline"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "rss"
+              }
+            },
+            "required": [
+              "type"
+            ]
+          },
+          "then": {
+            "required": [
+              "xmlUrl"
+            ]
+          }
+        }
+      ],
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

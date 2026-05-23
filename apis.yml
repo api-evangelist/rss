@@ -1,0 +1,205 @@
+aid: rss
+name: RSS
+description: >-
+  RSS (Really Simple Syndication) is the canonical XML feed format family for
+  publishing and subscribing to streams of frequently updated content — blogs,
+  news, podcasts, and other periodic resources. The RSS family in this index
+  covers RSS 2.0 (stewarded by the RSS Advisory Board), Atom 1.0 (RFC 4287),
+  JSON Feed 1.1, the RSS Best Practices Profile, OPML 2.0 for feed subscription
+  lists, and HTML autodiscovery conventions used by feed readers to locate
+  feeds from a site's homepage.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Syndication
+  - RSS
+  - Atom
+  - JSON Feed
+  - OPML
+  - Content
+  - XML
+  - Specification
+  - Standard
+url: https://raw.githubusercontent.com/api-evangelist/rss/refs/heads/main/apis.yml
+created: '2025-01-01'
+modified: '2026-05-23'
+specificationVersion: '0.19'
+apis:
+  - aid: rss:rss-2-0
+    name: RSS 2.0
+    description: >-
+      RSS 2.0 is the dominant XML-based syndication format, stewarded by the
+      RSS Advisory Board. A feed consists of a root <rss version="2.0"> element
+      wrapping a single <channel> with required title, link, and description,
+      plus a sequence of <item> elements describing each piece of syndicated
+      content. The spec is intentionally frozen — extensions happen through
+      XML namespaces rather than core changes.
+    humanURL: https://www.rssboard.org/rss-specification
+    tags:
+      - RSS
+      - Syndication
+      - XML
+      - Specification
+    properties:
+      - type: Documentation
+        url: https://www.rssboard.org/rss-specification
+      - type: BestPractices
+        url: https://www.rssboard.org/rss-profile
+      - type: Validator
+        url: https://www.rssboard.org/rss-validator/
+      - type: Autodiscovery
+        url: https://www.rssboard.org/rss-autodiscovery
+      - type: MediaType
+        url: https://www.iana.org/assignments/media-types/application/rss+xml
+      - type: JSONSchema
+        url: json-schema/rss-channel-schema.json
+      - type: JSONSchema
+        url: json-schema/rss-item-schema.json
+      - type: JSONStructure
+        url: json-structure/rss-channel-structure.json
+      - type: Example
+        url: examples/rss-channel-example.json
+      - type: Example
+        url: examples/rss-item-example.json
+  - aid: rss:atom-1-0
+    name: Atom 1.0
+    description: >-
+      Atom 1.0, defined by IETF RFC 4287, is an XML-based syndication format
+      developed as a more rigorously specified alternative to RSS 2.0. An Atom
+      feed (atom:feed) contains required atom:id, atom:title, atom:updated, and
+      atom:author elements plus a sequence of atom:entry items each with their
+      own id, title, updated, and content or summary. Atom uses the namespace
+      http://www.w3.org/2005/Atom and the application/atom+xml media type.
+    humanURL: https://datatracker.ietf.org/doc/html/rfc4287
+    tags:
+      - Atom
+      - Syndication
+      - IETF
+      - XML
+      - Specification
+    properties:
+      - type: Specification
+        url: https://datatracker.ietf.org/doc/html/rfc4287
+      - type: Namespace
+        url: http://www.w3.org/2005/Atom
+      - type: MediaType
+        url: https://www.iana.org/assignments/media-types/application/atom+xml
+      - type: JSONSchema
+        url: json-schema/atom-feed-schema.json
+      - type: JSONSchema
+        url: json-schema/atom-entry-schema.json
+      - type: Example
+        url: examples/atom-feed-example.json
+  - aid: rss:json-feed-1-1
+    name: JSON Feed 1.1
+    description: >-
+      JSON Feed 1.1 is a JSON-based syndication format created by Brent Simmons
+      and Manton Reece as a developer-friendly alternative to RSS and Atom. A
+      JSON Feed has top-level version, title, and items, with each item carrying
+      a required id and at least one of content_html or content_text. JSON Feed
+      is served with the application/feed+json media type.
+    humanURL: https://www.jsonfeed.org/version/1.1/
+    tags:
+      - JSON Feed
+      - Syndication
+      - JSON
+      - Specification
+    properties:
+      - type: Specification
+        url: https://www.jsonfeed.org/version/1.1/
+      - type: MediaType
+        url: application/feed+json
+      - type: JSONSchema
+        url: json-schema/json-feed-schema.json
+      - type: JSONSchema
+        url: json-schema/json-feed-item-schema.json
+      - type: Example
+        url: examples/json-feed-example.json
+  - aid: rss:rss-best-practices-profile
+    name: RSS Best Practices Profile
+    description: >-
+      The RSS Best Practices Profile is the RSS Advisory Board's normative
+      guidance on producing RSS feeds that interoperate cleanly across the
+      diverse population of feed readers. It covers character data, date
+      formats, email addresses, URLs, element-by-element recommendations, and
+      common namespace extensions including how to use guid, pubDate, and
+      enclosure to avoid known interoperability problems.
+    humanURL: https://www.rssboard.org/rss-profile
+    tags:
+      - RSS
+      - Best Practices
+      - Profile
+      - Interoperability
+    properties:
+      - type: Documentation
+        url: https://www.rssboard.org/rss-profile
+      - type: Vocabulary
+        url: vocabulary/rss-vocabulary.yml
+  - aid: rss:opml-2-0
+    name: OPML 2.0
+    description: >-
+      OPML (Outline Processor Markup Language) 2.0 is an XML format for
+      outlines, most commonly used to exchange lists of RSS/Atom feed
+      subscriptions between feed readers. A subscription list OPML file has a
+      body containing outline elements with type="rss", text, xmlUrl (the feed
+      URL), and htmlUrl (the human-readable site URL). OPML is the de facto
+      portable format for feed subscription import/export.
+    humanURL: http://opml.org/spec2.opml
+    tags:
+      - OPML
+      - Outline
+      - Subscription
+      - Syndication
+      - XML
+    properties:
+      - type: Specification
+        url: http://opml.org/spec2.opml
+      - type: JSONSchema
+        url: json-schema/opml-subscription-list-schema.json
+      - type: Example
+        url: examples/opml-subscription-list-example.json
+  - aid: rss:feed-autodiscovery
+    name: Feed Autodiscovery
+    description: >-
+      Feed autodiscovery is the HTML convention by which a web page advertises
+      the location of its RSS, Atom, or JSON Feed using a <link rel="alternate"
+      type="application/rss+xml" href="..."> element in the document head.
+      Feed readers, browsers, and crawlers look for this element to discover
+      feeds from a homepage URL alone, without requiring the user to know the
+      exact feed path. The same pattern is used with application/atom+xml and
+      application/feed+json types.
+    humanURL: https://www.rssboard.org/rss-autodiscovery
+    tags:
+      - Autodiscovery
+      - HTML
+      - Syndication
+      - Discovery
+    properties:
+      - type: Documentation
+        url: https://www.rssboard.org/rss-autodiscovery
+      - type: Example
+        url: examples/feed-autodiscovery-example.json
+common:
+  - type: Website
+    url: https://www.rssboard.org/
+  - type: Documentation
+    url: https://www.rssboard.org/rss-specification
+  - type: BestPractices
+    url: https://www.rssboard.org/rss-profile
+  - type: Validator
+    url: https://www.rssboard.org/rss-validator/
+  - type: Blog
+    url: https://www.rssboard.org/news
+  - type: AtomSpecification
+    url: https://datatracker.ietf.org/doc/html/rfc4287
+  - type: JSONFeedSpecification
+    url: https://www.jsonfeed.org/version/1.1/
+  - type: OPMLSpecification
+    url: http://opml.org/spec2.opml
+  - type: JSONLDContext
+    url: json-ld/rss-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/rss-vocabulary.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

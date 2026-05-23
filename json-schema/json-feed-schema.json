@@ -1,0 +1,122 @@
+{
+  "$id": "json-feed-schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "JSON Feed 1.1",
+  "description": "Schema describing a JSON Feed 1.1 document per https://www.jsonfeed.org/version/1.1/. JSON Feed is a JSON-based syndication format served with the application/feed+json media type.",
+  "type": "object",
+  "required": [
+    "version",
+    "title",
+    "items"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "const": "https://jsonfeed.org/version/1.1",
+      "description": "URL identifying the version of the JSON Feed format this document conforms to."
+    },
+    "title": {
+      "type": "string",
+      "description": "Name of the feed."
+    },
+    "home_page_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the resource the feed describes — typically the homepage of the website. Strongly recommended for public feeds."
+    },
+    "feed_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the JSON Feed document itself. Strongly recommended for public feeds (enables relocation)."
+    },
+    "description": {
+      "type": "string",
+      "description": "Detail about the purpose of the feed."
+    },
+    "user_comment": {
+      "type": "string",
+      "description": "Description of the feed for humans viewing the source JSON."
+    },
+    "next_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of a paginated continuation of this feed."
+    },
+    "icon": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to an image (>= 512x512 recommended) representing the feed."
+    },
+    "favicon": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to a small icon (square, e.g. 64x64) for the feed."
+    },
+    "authors": {
+      "type": "array",
+      "description": "Authors of the feed. Replaces the singular 'author' from 1.0.",
+      "items": {
+        "$ref": "#/$defs/author"
+      }
+    },
+    "language": {
+      "type": "string",
+      "description": "Primary language for the feed, as an RFC 5646 language tag.",
+      "examples": [
+        "en-US"
+      ]
+    },
+    "expired": {
+      "type": "boolean",
+      "description": "If true, the feed will not be updated in the future. Default false.",
+      "default": false
+    },
+    "hubs": {
+      "type": "array",
+      "description": "WebSub or similar hubs that subscribers can use for real-time notification of feed updates.",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "url"
+        ],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "description": "Items in the feed, ordered most recent first.",
+      "items": {
+        "$ref": "json-feed-item-schema.json"
+      }
+    }
+  },
+  "$defs": {
+    "author": {
+      "type": "object",
+      "description": "Author of a feed or item.",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "avatar": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

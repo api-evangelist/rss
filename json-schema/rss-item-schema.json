@@ -1,0 +1,127 @@
+{
+  "$id": "rss-item-schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RSS 2.0 Item",
+  "description": "Schema describing an <item> element inside an RSS 2.0 channel. All sub-elements are optional, but at least one of title or description must be present.",
+  "type": "object",
+  "anyOf": [
+    {
+      "required": [
+        "title"
+      ]
+    },
+    {
+      "required": [
+        "description"
+      ]
+    }
+  ],
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Title of the item."
+    },
+    "link": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the item — typically the permalink to the corresponding HTML page."
+    },
+    "description": {
+      "type": "string",
+      "description": "Synopsis of the item. May contain HTML markup, typically escaped or in a CDATA section."
+    },
+    "author": {
+      "type": "string",
+      "description": "Email address of the author of the item, optionally followed by a name in parentheses."
+    },
+    "category": {
+      "type": "array",
+      "description": "Categories this item belongs to, optionally tagged with a taxonomy domain.",
+      "items": {
+        "type": "object",
+        "required": [
+          "value"
+        ],
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "comments": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of a page for comments relating to the item."
+    },
+    "enclosure": {
+      "type": "object",
+      "description": "Media object — most often used to attach podcast audio or video to the item. For maximum interoperability, the RSS Best Practices Profile recommends no more than one enclosure per item.",
+      "required": [
+        "url",
+        "length",
+        "type"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL where the enclosure is located."
+        },
+        "length": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Size of the enclosure in bytes."
+        },
+        "type": {
+          "type": "string",
+          "description": "MIME type of the enclosure (e.g., audio/mpeg, video/mp4).",
+          "examples": [
+            "audio/mpeg"
+          ]
+        }
+      }
+    },
+    "guid": {
+      "type": "object",
+      "description": "Globally unique identifier for the item. When isPermaLink is true (default), the value MUST be a resolvable URL. Best practice is to provide a stable, opaque identifier and set isPermaLink=false when the value is not a URL (e.g., a tag: URI).",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "isPermaLink": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "pubDate": {
+      "type": "string",
+      "description": "Indicates when the item was published, formatted per RFC 822. Items should not be published with future-dated pubDate as embargo, since aggregators do not honor this."
+    },
+    "source": {
+      "type": "object",
+      "description": "RSS channel that the item came from when republished from another feed.",
+      "required": [
+        "url",
+        "value"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

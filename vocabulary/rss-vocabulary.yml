@@ -1,0 +1,420 @@
+vocabulary:
+  name: RSS Family Vocabulary
+  description: >-
+    Normative and de facto vocabulary covering the RSS family of content
+    syndication standards — RSS 2.0, Atom 1.0 (RFC 4287), JSON Feed 1.1, OPML
+    2.0, the RSS Best Practices Profile, and HTML feed autodiscovery. Terms
+    are grouped by concept area: feed-level, item-level, identity, dates,
+    enclosures and media, subscription, and discovery. Each term notes which
+    spec(s) it appears in and its closest schema.org analogue when one exists.
+  version: '1.0'
+  created: '2026-05-23'
+  modified: '2026-05-23'
+
+feed-level-concepts:
+  - term: Feed
+    definition: >-
+      A document representing a stream of frequently updated content. In RSS
+      2.0 the feed is the <channel> element; in Atom 1.0 it is atom:feed; in
+      JSON Feed 1.1 it is the top-level JSON object.
+    inSpecs:
+      - RSS 2.0
+      - Atom 1.0
+      - JSON Feed 1.1
+    schemaOrg: DataFeed
+    related:
+      - Channel
+      - Item
+      - Entry
+
+  - term: Channel
+    definition: >-
+      The RSS 2.0 container element that holds feed metadata (title, link,
+      description) and a sequence of <item> elements. The XML root <rss> always
+      wraps exactly one channel.
+    inSpecs:
+      - RSS 2.0
+    schemaOrg: DataFeed
+    related:
+      - Feed
+      - Item
+
+  - term: Title
+    definition: >-
+      Required human-readable name of the feed (or item). Mandatory in RSS 2.0
+      <channel>, Atom atom:feed, and JSON Feed top-level. In Atom, may carry
+      type='text', 'html', or 'xhtml'.
+    inSpecs:
+      - RSS 2.0
+      - Atom 1.0
+      - JSON Feed 1.1
+    schemaOrg: name
+    required: true
+
+  - term: Description
+    definition: >-
+      Phrase or sentence describing the feed (RSS 2.0 channel) or item.
+      Mandatory at channel level in RSS 2.0; optional in Atom (as subtitle)
+      and JSON Feed (as description).
+    inSpecs:
+      - RSS 2.0
+    schemaOrg: description
+
+  - term: Link
+    definition: >-
+      URL associated with a feed or item. In RSS 2.0 it is the website URL
+      and item permalink; in Atom it is structured atom:link with rel
+      attributes (self, alternate, related, enclosure, via, hub).
+    inSpecs:
+      - RSS 2.0
+      - Atom 1.0
+    schemaOrg: url
+    related:
+      - PermaLink
+      - Self Link
+      - Hub
+
+item-level-concepts:
+  - term: Item
+    definition: >-
+      The RSS 2.0 unit of syndicated content inside a channel. All sub-elements
+      are optional but at least one of <title> or <description> MUST be present.
+    inSpecs:
+      - RSS 2.0
+    schemaOrg: Article
+    related:
+      - Entry
+      - Channel
+      - GUID
+
+  - term: Entry
+    definition: >-
+      The Atom 1.0 unit of syndicated content inside a feed. Each atom:entry
+      MUST have id, title, and updated; author may be inherited from the
+      parent feed; either content or an alternate link is required.
+    inSpecs:
+      - Atom 1.0
+    schemaOrg: Article
+    required:
+      - id
+      - title
+      - updated
+
+  - term: Content
+    definition: >-
+      The body of an item or entry. In Atom, atom:content may be text, html,
+      xhtml, or reference remote content via src. In JSON Feed, an item MUST
+      supply at least one of content_html or content_text.
+    inSpecs:
+      - Atom 1.0
+      - JSON Feed 1.1
+    schemaOrg: articleBody
+
+  - term: Summary
+    definition: >-
+      Short representation of an entry's content. Required in Atom when
+      atom:content is base64-encoded, references remote content, or is absent
+      in favor of a link.
+    inSpecs:
+      - Atom 1.0
+      - JSON Feed 1.1
+    schemaOrg: abstract
+
+identity:
+  - term: GUID
+    definition: >-
+      Globally unique identifier for an RSS 2.0 item. When isPermaLink='true'
+      (default) the value MUST be a resolvable URL. Best practice per the RSS
+      Best Practices Profile is to provide a stable opaque identifier and set
+      isPermaLink='false', commonly using the Tag URI scheme (RFC 4151).
+    inSpecs:
+      - RSS 2.0
+      - RSS Best Practices Profile
+    schemaOrg: identifier
+    aliases:
+      - Globally Unique Identifier
+    related:
+      - Tag URI
+
+  - term: ID
+    definition: >-
+      Atom 1.0 atom:id — permanent, universally unique identifier for a feed
+      or entry as an IRI. In JSON Feed, item.id SHOULD be a URL that resolves
+      to the item's permalink.
+    inSpecs:
+      - Atom 1.0
+      - JSON Feed 1.1
+    schemaOrg: identifier
+    required: true
+
+  - term: PermaLink
+    definition: >-
+      Permanent URL for an item or entry. In RSS 2.0 the <link> element of an
+      item serves as the permalink; an item's guid is a permalink when
+      isPermaLink='true'.
+    inSpecs:
+      - RSS 2.0
+      - Atom 1.0
+      - JSON Feed 1.1
+    schemaOrg: url
+
+  - term: Tag URI
+    definition: >-
+      An identifier scheme (RFC 4151) of the form
+      'tag:authority,YYYY-MM-DD:specific-string' often used as a stable
+      non-URL guid for RSS items to avoid coupling identity to URL changes.
+    inSpecs:
+      - RSS Best Practices Profile
+    related:
+      - GUID
+
+dates:
+  - term: pubDate
+    definition: >-
+      Publication date of an RSS 2.0 channel or item, formatted per RFC 822.
+      Aggregators do not honor future-dated pubDate — items SHOULD NOT be
+      published with a future pubDate to attempt embargo.
+    inSpecs:
+      - RSS 2.0
+      - RSS Best Practices Profile
+    schemaOrg: datePublished
+
+  - term: lastBuildDate
+    definition: >-
+      RSS 2.0 channel-level RFC 822 timestamp of the last time the channel's
+      content changed.
+    inSpecs:
+      - RSS 2.0
+    schemaOrg: dateModified
+
+  - term: updated
+    definition: >-
+      Atom 1.0 atom:updated — most recent instant when the feed or entry was
+      meaningfully modified, as an RFC 3339 timestamp.
+    inSpecs:
+      - Atom 1.0
+    schemaOrg: dateModified
+    required: true
+
+  - term: published
+    definition: >-
+      Atom 1.0 atom:published — initial creation or first availability of an
+      entry, as an RFC 3339 timestamp.
+    inSpecs:
+      - Atom 1.0
+    schemaOrg: datePublished
+
+  - term: date_published
+    definition: >-
+      JSON Feed 1.1 RFC 3339 timestamp of an item's original publication.
+    inSpecs:
+      - JSON Feed 1.1
+    schemaOrg: datePublished
+
+  - term: date_modified
+    definition: >-
+      JSON Feed 1.1 RFC 3339 timestamp of an item's last modification.
+    inSpecs:
+      - JSON Feed 1.1
+    schemaOrg: dateModified
+
+enclosures-and-media:
+  - term: Enclosure
+    definition: >-
+      An RSS 2.0 media attachment on an item, with url, length (bytes), and
+      type (MIME) attributes. The foundation of podcasting. Best practice is
+      no more than one enclosure per item because not all aggregators handle
+      multiple enclosures.
+    inSpecs:
+      - RSS 2.0
+      - RSS Best Practices Profile
+    schemaOrg: associatedMedia
+    related:
+      - Attachment
+      - Media RSS
+
+  - term: Attachment
+    definition: >-
+      JSON Feed 1.1 item-level media attachment with url, mime_type, optional
+      title, size_in_bytes, and duration_in_seconds.
+    inSpecs:
+      - JSON Feed 1.1
+    schemaOrg: associatedMedia
+
+  - term: Media RSS
+    definition: >-
+      A widely-used XML namespace extension to RSS 2.0
+      (http://search.yahoo.com/mrss/) for richer media metadata than the
+      single-enclosure model — multiple media:content nodes, thumbnails,
+      ratings, credits.
+    inSpecs:
+      - Media RSS (extension)
+    related:
+      - Enclosure
+
+subscription:
+  - term: OPML
+    definition: >-
+      Outline Processor Markup Language — an XML format whose most common
+      application is exchanging lists of RSS/Atom/JSON Feed subscriptions
+      between feed readers. Subscription-list outlines use type='rss' with
+      xmlUrl pointing to the feed and htmlUrl pointing to the site.
+    inSpecs:
+      - OPML 2.0
+    aliases:
+      - Outline Processor Markup Language
+
+  - term: Subscription List
+    definition: >-
+      An OPML 2.0 document whose body contains outline elements representing
+      a user's feed subscriptions, optionally nested into folder outlines.
+      The de facto portable format for feed-reader import/export.
+    inSpecs:
+      - OPML 2.0
+    related:
+      - OPML
+      - Outline
+
+  - term: Outline
+    definition: >-
+      The fundamental OPML element; for subscription lists, a leaf outline
+      represents one feed subscription via type='rss', text, title, xmlUrl,
+      and htmlUrl.
+    inSpecs:
+      - OPML 2.0
+
+discovery:
+  - term: Autodiscovery
+    definition: >-
+      HTML convention by which a web page advertises its feed(s) via
+      <link rel='alternate' type='application/rss+xml' href='...'> elements
+      in the document head. Feed readers, browsers, and crawlers use this to
+      locate feeds from a homepage URL alone. The same pattern is used with
+      application/atom+xml and application/feed+json.
+    inSpecs:
+      - HTML
+      - RSS Best Practices Profile
+    related:
+      - Self Link
+      - .well-known/feeds
+
+  - term: Self Link
+    definition: >-
+      An atom:link with rel='self' pointing at the feed's own canonical URL.
+      Required for proper feed identity and relocation across the Atom
+      ecosystem; widely adopted in RSS 2.0 via the Atom namespace as well.
+    inSpecs:
+      - Atom 1.0
+    related:
+      - feed_url
+
+  - term: feed_url
+    definition: >-
+      JSON Feed 1.1 top-level URL identifying the feed itself; the JSON Feed
+      equivalent of atom:link rel='self'. Strongly recommended for public
+      feeds because it enables relocation.
+    inSpecs:
+      - JSON Feed 1.1
+
+  - term: home_page_url
+    definition: >-
+      JSON Feed 1.1 top-level URL identifying the human-readable website the
+      feed describes — the equivalent of RSS 2.0 channel <link>.
+    inSpecs:
+      - JSON Feed 1.1
+
+push-and-real-time:
+  - term: WebSub
+    definition: >-
+      W3C Recommendation (formerly PubSubHubbub) defining a publish/subscribe
+      protocol over HTTP that turns pull-based feeds into push-based ones.
+      JSON Feed 1.1 surfaces WebSub hubs via the top-level 'hubs' array; Atom
+      and RSS surface them via <link rel='hub' href='...'> elements.
+    inSpecs:
+      - WebSub (W3C)
+      - JSON Feed 1.1
+      - Atom 1.0
+      - RSS 2.0
+    related:
+      - Hub
+
+  - term: Hub
+    definition: >-
+      A WebSub hub URL advertised by a feed to which subscribers can
+      subscribe to receive real-time notifications when the feed changes,
+      avoiding pure polling.
+    inSpecs:
+      - WebSub
+      - JSON Feed 1.1
+    related:
+      - WebSub
+
+  - term: rssCloud
+    definition: >-
+      The original RSS 2.0 <cloud> element predating WebSub, declaring a
+      service that aggregators can register with to be notified of channel
+      updates. Limited adoption today.
+    inSpecs:
+      - RSS 2.0
+
+extensions:
+  - term: XML Namespace Extension
+    definition: >-
+      The standard mechanism for extending RSS 2.0 and Atom feeds without
+      changing the core spec — declare a new XML namespace and add elements
+      from that namespace alongside core ones. RSS 2.0's frozen status makes
+      namespaces the only path for new features.
+    inSpecs:
+      - RSS 2.0
+      - Atom 1.0
+    related:
+      - Media RSS
+      - iTunes Podcast Namespace
+      - Dublin Core
+
+  - term: iTunes Podcast Namespace
+    definition: >-
+      Apple's RSS 2.0 namespace extension
+      (http://www.itunes.com/dtds/podcast-1.0.dtd) defining the de facto
+      podcast metadata vocabulary — itunes:author, itunes:category,
+      itunes:explicit, itunes:image, itunes:duration, itunes:summary.
+    inSpecs:
+      - iTunes Podcast Namespace (extension)
+
+  - term: Dublin Core
+    definition: >-
+      A widely-used metadata namespace (http://purl.org/dc/elements/1.1/)
+      embedded in many RSS 2.0 feeds for canonical metadata like dc:creator
+      and dc:date.
+    inSpecs:
+      - Dublin Core
+      - RSS 2.0 (via extension)
+
+media-types:
+  - term: application/rss+xml
+    definition: >-
+      IANA-registered MIME type for RSS 2.0 feeds. Used as the value of the
+      type attribute in autodiscovery <link> elements and as the Content-Type
+      response header when serving RSS feeds.
+    inSpecs:
+      - RSS 2.0
+
+  - term: application/atom+xml
+    definition: >-
+      IANA-registered MIME type for Atom 1.0 feeds, defined by RFC 4287.
+    inSpecs:
+      - Atom 1.0
+
+  - term: application/feed+json
+    definition: >-
+      MIME type recommended by JSON Feed 1.1 for JSON Feed documents.
+      application/json is acceptable as a fallback.
+    inSpecs:
+      - JSON Feed 1.1
+
+  - term: text/x-opml
+    definition: >-
+      De facto MIME type used for OPML 2.0 subscription lists in HTTP
+      responses and HTML autodiscovery link elements.
+    inSpecs:
+      - OPML 2.0

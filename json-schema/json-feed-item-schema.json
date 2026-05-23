@@ -1,0 +1,140 @@
+{
+  "$id": "json-feed-item-schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "JSON Feed 1.1 Item",
+  "description": "Schema describing a single item in a JSON Feed 1.1 document. Each item MUST have an id and at least one of content_html or content_text.",
+  "type": "object",
+  "required": [
+    "id"
+  ],
+  "anyOf": [
+    {
+      "required": [
+        "content_html"
+      ]
+    },
+    {
+      "required": [
+        "content_text"
+      ]
+    }
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the item. SHOULD be a URL that resolves to the item's permalink for maximum interoperability."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Permalink to the item on its native website."
+    },
+    "external_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of an external page the item refers to (e.g., a link blog entry pointing elsewhere)."
+    },
+    "title": {
+      "type": "string",
+      "description": "Item title. Optional — content may stand on its own without a title (microblog-style items)."
+    },
+    "content_html": {
+      "type": "string",
+      "description": "HTML rendering of the item content. At least one of content_html or content_text MUST be provided."
+    },
+    "content_text": {
+      "type": "string",
+      "description": "Plain-text rendering of the item content."
+    },
+    "summary": {
+      "type": "string",
+      "description": "Plain-text summary, typically shown in a feed reader's item list."
+    },
+    "image": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the main image for the item."
+    },
+    "banner_image": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of a banner image for the item."
+    },
+    "date_published": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date the item was originally published (RFC 3339)."
+    },
+    "date_modified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date the item was last modified (RFC 3339)."
+    },
+    "authors": {
+      "type": "array",
+      "description": "Author(s) of the item.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "avatar": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "description": "Plain-text tags applied to the item.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "language": {
+      "type": "string",
+      "description": "Item language (RFC 5646)."
+    },
+    "attachments": {
+      "type": "array",
+      "description": "Related resources such as podcast episodes (audio/mp3) or video files attached to the item.",
+      "items": {
+        "type": "object",
+        "required": [
+          "url",
+          "mime_type"
+        ],
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "mime_type": {
+            "type": "string",
+            "examples": [
+              "audio/mpeg"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "size_in_bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "duration_in_seconds": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}
