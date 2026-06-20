@@ -4,7 +4,7 @@
   "home_page_url": "https://apievangelist.com/",
   "feed_url": "https://apievangelist.com/feed.json",
   "description": "API research, analysis, and advocacy.",
-  "icon": "https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg",
+  "icon": "https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg",
   "favicon": "https://kinlane-productions.s3.amazonaws.com/favicon.ico",
   "language": "en-US",
   "authors": [

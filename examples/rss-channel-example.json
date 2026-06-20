@@ -25,7 +25,7 @@
       "docs": "https://www.rssboard.org/rss-specification",
       "ttl": 60,
       "image": {
-        "url": "https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg",
+        "url": "https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg",
         "title": "API Evangelist",
         "link": "https://apievangelist.com/",
         "width": 144,

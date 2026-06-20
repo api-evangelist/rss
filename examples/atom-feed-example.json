@@ -38,7 +38,7 @@
       "version": "1.0"
     },
     "icon": "https://kinlane-productions.s3.amazonaws.com/favicon.ico",
-    "logo": "https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg",
+    "logo": "https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg",
     "rights": "Copyright 2026 API Evangelist",
     "entry": [
       {
