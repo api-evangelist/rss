@@ -57,9 +57,9 @@ apis:
         url: json-schema/rss-item-schema.json
       - type: JSONStructure
         url: json-structure/rss-channel-structure.json
-      - type: Example
+      - type: Examples
         url: examples/rss-channel-example.json
-      - type: Example
+      - type: Examples
         url: examples/rss-item-example.json
   - aid: rss:atom-1-0
     name: Atom 1.0
@@ -88,7 +88,7 @@ apis:
         url: json-schema/atom-feed-schema.json
       - type: JSONSchema
         url: json-schema/atom-entry-schema.json
-      - type: Example
+      - type: Examples
         url: examples/atom-feed-example.json
   - aid: rss:json-feed-1-1
     name: JSON Feed 1.1
@@ -113,7 +113,7 @@ apis:
         url: json-schema/json-feed-schema.json
       - type: JSONSchema
         url: json-schema/json-feed-item-schema.json
-      - type: Example
+      - type: Examples
         url: examples/json-feed-example.json
   - aid: rss:rss-best-practices-profile
     name: RSS Best Practices Profile
@@ -156,7 +156,7 @@ apis:
         url: http://opml.org/spec2.opml
       - type: JSONSchema
         url: json-schema/opml-subscription-list-schema.json
-      - type: Example
+      - type: Examples
         url: examples/opml-subscription-list-example.json
   - aid: rss:feed-autodiscovery
     name: Feed Autodiscovery
@@ -177,7 +177,7 @@ apis:
     properties:
       - type: Documentation
         url: https://www.rssboard.org/rss-autodiscovery
-      - type: Example
+      - type: Examples
         url: examples/feed-autodiscovery-example.json
 common:
   - type: Website
