@@ -1,0 +1,32 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.rssboard.org
+  https: true
+  tls_version: TLSv1.2
+  cert_expires: Oct  2 15:16:56 2026 GMT
+  hsts: false
+- host: datatracker.ietf.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  5 20:01:07 2026 GMT
+  hsts: true
+  hsts_max_age: 3600
+- host: www.jsonfeed.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 15 01:21:33 2026 GMT
+  hsts: false
+domains:
+- domain: rssboard.org
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false
+- domain: ietf.org
+  dnssec: true
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
