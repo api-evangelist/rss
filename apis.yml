@@ -118,8 +118,6 @@ apis:
     properties:
       - type: Specification
         url: https://www.jsonfeed.org/version/1.1/
-      - type: MediaType
-        url: application/feed+json
       - type: JSONSchema
         url: json-schema/json-feed-schema.json
       - type: JSONSchema
