@@ -41,6 +41,16 @@ tags:
   - Content
   - XML
   - Specification
+  - Standards
+tags_raw:
+  - Syndication
+  - RSS
+  - Atom
+  - JSON Feed
+  - OPML
+  - Content
+  - XML
+  - Specification
   - Standard
 url: https://raw.githubusercontent.com/api-evangelist/rss/refs/heads/main/apis.yml
 created: '2025-01-01'
@@ -146,6 +156,11 @@ apis:
       enclosure to avoid known interoperability problems.
     humanURL: https://www.rssboard.org/rss-profile
     tags:
+      - RSS
+      - Best Practices
+      - Profiles
+      - Interoperability
+    tags_raw:
       - RSS
       - Best Practices
       - Profile
